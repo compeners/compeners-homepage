@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>이메일주소무단수집거부 — COMPENERS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #08111F; --blue: #3D8EE8; --blue-lt: #5AAAF0;
+  --gray-100: #F5F7FA; --gray-200: #E8ECF2; --gray-600: #5A6678;
+  --txt: #0D1B2E; --mono: 'DM Mono', monospace; --sans: 'Noto Sans KR', sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--sans); background: #fff; color: var(--txt); -webkit-font-smoothing: antialiased; }
+nav {
+  background: var(--navy); padding: 0 60px; height: 64px;
+  display: flex; align-items: center; justify-content: space-between;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.nav-logo-main { color: #fff; font-size: 20px; font-weight: 900; letter-spacing: .18em; text-decoration: none; display: block; }
+.nav-logo-sub { color: rgba(255,255,255,0.28); font-size: 9px; font-family: var(--mono); letter-spacing: .1em; margin-top: 4px; }
+.nav-back { color: rgba(255,255,255,0.5); font-size: 12px; text-decoration: none; border: 1px solid rgba(255,255,255,0.2); padding: 7px 16px; border-radius: 6px; }
+.nav-back:hover { border-color: rgba(255,255,255,0.5); color: #fff; }
+.hero { background: var(--navy); padding: 48px 60px; }
+.hero-tag { font-family: var(--mono); font-size: 9px; color: var(--blue-lt); letter-spacing: .14em; margin-bottom: 10px; }
+.hero-h1 { color: #fff; font-size: 32px; font-weight: 900; letter-spacing: -.02em; margin-bottom: 8px; }
+.hero-meta { color: rgba(255,255,255,0.35); font-size: 12px; font-family: var(--mono); }
+.content { max-width: 800px; margin: 0 auto; padding: 64px 60px; }
+.notice-box {
+  background: #FEF2F2; border: 1px solid #FECACA;
+  border-radius: 12px; padding: 28px 32px; margin-bottom: 32px;
+  border-left: 4px solid #EF4444;
+}
+.notice-box h2 { font-size: 16px; font-weight: 700; color: #7F1D1D; margin-bottom: 12px; }
+.notice-box p { font-size: 13px; color: #7F1D1D; line-height: 1.9; }
+.notice-box strong { font-weight: 700; }
+.info-box {
+  background: var(--gray-100); border: 1px solid var(--gray-200);
+  border-radius: 10px; padding: 20px 24px; margin-top: 24px;
+}
+.info-box p { font-size: 13px; color: var(--gray-600); line-height: 1.9; margin-bottom: 4px; }
+.info-box p:last-child { margin-bottom: 0; }
+.date-text { font-size: 12px; color: var(--gray-600); margin-top: 24px; font-family: var(--mono); }
+footer {
+  background: #050D19; padding: 28px 60px;
+  display: flex; align-items: center; justify-content: space-between;
+  border-top: 1px solid rgba(255,255,255,0.05); margin-top: 40px;
+}
+.ft-logo strong { color: rgba(255,255,255,0.6); font-size: 13px; letter-spacing: .08em; display: block; }
+.ft-logo span { color: rgba(255,255,255,0.22); font-size: 10px; margin-top: 3px; display: block; }
+.ft-copy { color: rgba(255,255,255,0.2); font-size: 11px; font-family: var(--mono); }
+@media (max-width: 640px) {
+  nav { padding: 0 24px; }
+  .hero { padding: 40px 24px; }
+  .content { padding: 40px 24px; }
+  footer { padding: 24px; flex-direction: column; gap: 16px; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+<nav>
+  <div>
+    <a href="index.html" class="nav-logo-main">COMPENERS</a>
+    <div class="nav-logo-sub">Business Decision Architecture</div>
+  </div>
+  <a href="index.html" class="nav-back">← 홈으로</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-tag">LEGAL</div>
+  <h1 class="hero-h1">이메일주소 무단수집 거부</h1>
+  <div class="hero-meta">게시일 2024.11.19</div>
+</div>
+
+<div class="content">
+  <div class="notice-box">
+    <h2>⚠ 이메일주소 무단수집을 거부합니다</h2>
+    <p>
+      주식회사 컴퍼너스는 회원에게 무차별적으로 보내지는 타사의 메일을 차단하기 위해,<br>
+      본 웹사이트에 게시된 이메일 주소가 전자우편 수집 프로그램이나 그 밖의 기술적 장치를 이용하여<br>
+      <strong>무단으로 수집되는 것을 거부</strong>하며, 이를 위반 시 <strong>정보통신망법에 의해 형사처벌</strong>됨을 유념하시기 바랍니다.
+    </p>
+  </div>
+
+  <div class="info-box">
+    <p><strong>회사명</strong> : 주식회사 컴퍼너스</p>
+    <p><strong>대표이사</strong> : 정의석, 최규영</p>
+    <p><strong>문의</strong> : cp@compeners.co.kr | 02-2088-3808</p>
+    <p><strong>주소</strong> : 서울특별시 영등포구 선유로9길 10 문래 SK V1 Center 10층 1008호</p>
+  </div>
+
+  <p class="date-text">게시일 : 2024년 11월 19일</p>
+</div>
+
+<footer>
+  <div class="ft-logo">
+    <strong>COMPENERS</strong>
+    <span>주식회사 컴퍼너스 | 사업자등록번호 721-87-03463 | 대표이사 정의석, 최규영</span>
+  </div>
+  <div class="ft-copy">© 2026 Compeners. All rights reserved.</div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>개인정보처리방침 — COMPENERS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #08111F; --blue: #3D8EE8; --blue-lt: #5AAAF0;
+  --gray-100: #F5F7FA; --gray-200: #E8ECF2; --gray-600: #5A6678;
+  --txt: #0D1B2E; --mono: 'DM Mono', monospace; --sans: 'Noto Sans KR', sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--sans); background: #fff; color: var(--txt); -webkit-font-smoothing: antialiased; }
+nav {
+  background: var(--navy); padding: 0 60px; height: 64px;
+  display: flex; align-items: center; justify-content: space-between;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.nav-logo { display: flex; flex-direction: column; gap: 4px; }
+.nav-logo-main { color: #fff; font-size: 20px; font-weight: 900; letter-spacing: .18em; text-decoration: none; display: block; }
+.nav-logo-sub { color: rgba(255,255,255,0.28); font-size: 9px; font-family: var(--mono); letter-spacing: .1em; }
+.nav-back { color: rgba(255,255,255,0.5); font-size: 12px; text-decoration: none; border: 1px solid rgba(255,255,255,0.2); padding: 7px 16px; border-radius: 6px; transition: border-color .2s, color .2s; }
+.nav-back:hover { border-color: rgba(255,255,255,0.5); color: #fff; }
+.hero { background: var(--navy); padding: 48px 60px; }
+.hero-tag { font-family: var(--mono); font-size: 9px; color: var(--blue-lt); letter-spacing: .14em; margin-bottom: 10px; }
+.hero-h1 { color: #fff; font-size: 32px; font-weight: 900; letter-spacing: -.02em; margin-bottom: 8px; }
+.hero-meta { color: rgba(255,255,255,0.35); font-size: 12px; font-family: var(--mono); }
+.content { max-width: 800px; margin: 0 auto; padding: 64px 60px; }
+.intro {
+  background: var(--gray-100); border-radius: 12px; padding: 24px 28px;
+  margin-bottom: 48px; border-left: 4px solid var(--blue);
+}
+.intro p { font-size: 14px; color: var(--gray-600); line-height: 1.9; }
+.section { margin-bottom: 44px; }
+.section-num { font-family: var(--mono); font-size: 9px; color: var(--blue); letter-spacing: .12em; margin-bottom: 6px; }
+.section-title { font-size: 17px; font-weight: 700; color: var(--txt); margin-bottom: 16px; }
+.section p { font-size: 14px; color: var(--gray-600); line-height: 1.9; margin-bottom: 10px; }
+.section p.note { font-size: 12px; color: #9BA8B8; margin-top: 12px; }
+.section ul { padding-left: 0; margin-bottom: 10px; list-style: none; }
+.section ul li {
+  font-size: 14px; color: var(--gray-600); line-height: 1.85;
+  padding: 10px 14px; margin-bottom: 6px;
+  background: var(--gray-100); border-radius: 6px;
+  display: flex; gap: 10px; align-items: flex-start;
+}
+.section ul li::before { content: '◆'; color: var(--blue); font-size: 8px; margin-top: 6px; flex-shrink: 0; }
+.section ul li strong { color: var(--txt); }
+.section a { color: var(--blue); text-decoration: none; }
+.info-box {
+  background: var(--gray-100); border: 1px solid var(--gray-200);
+  border-radius: 10px; padding: 20px 24px; margin-top: 12px;
+}
+.info-box p { font-size: 14px; color: var(--gray-600); line-height: 1.9; margin-bottom: 4px; }
+.info-box p:last-child { margin-bottom: 0; }
+.info-box a { color: var(--blue); text-decoration: none; }
+.divider { height: 1px; background: var(--gray-200); margin: 44px 0; }
+.date-box {
+  background: var(--navy); border-radius: 10px; padding: 20px 28px;
+  display: flex; gap: 32px; align-items: center; margin-top: 48px;
+  flex-wrap: wrap;
+}
+.date-item { display: flex; flex-direction: column; gap: 4px; }
+.date-item span { color: rgba(255,255,255,0.4); font-size: 10px; font-family: var(--mono); letter-spacing: .08em; }
+.date-item strong { color: #fff; font-size: 14px; }
+footer {
+  background: #050D19; padding: 28px 60px;
+  display: flex; align-items: center; justify-content: space-between;
+  border-top: 1px solid rgba(255,255,255,0.05); margin-top: 40px;
+}
+.ft-logo strong { color: rgba(255,255,255,0.6); font-size: 13px; letter-spacing: .08em; display: block; }
+.ft-logo span { color: rgba(255,255,255,0.22); font-size: 10px; margin-top: 3px; display: block; line-height: 1.6; }
+.ft-copy { color: rgba(255,255,255,0.2); font-size: 11px; font-family: var(--mono); }
+@media (max-width: 640px) {
+  nav { padding: 0 24px; }
+  .hero { padding: 40px 24px; }
+  .content { padding: 40px 24px; }
+  footer { padding: 24px; flex-direction: column; gap: 16px; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">
+    <a href="index.html" class="nav-logo-main">COMPENERS</a>
+    <div class="nav-logo-sub">Business Decision Architecture</div>
+  </div>
+  <a href="index.html" class="nav-back">← 홈으로</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-tag">LEGAL</div>
+  <h1 class="hero-h1">개인정보처리방침</h1>
+  <div class="hero-meta">공고일 2024.11.19 · 시행일 2024.11.19</div>
+</div>
+
+<div class="content">
+  <div class="intro">
+    <p>주식회사 컴퍼너스(이하 "회사")는 고객님의 개인정보를 중요하게 생각하며, 개인정보보호법 제30조에 따라 정보주체의 개인정보를 보호하고 이와 관련한 고충을 신속하고 원활하게 처리할 수 있도록 다음과 같이 개인정보 처리방침을 수립·공개합니다. 본 방침은 회사 홈페이지(compeners.co.kr) 운영 및 경영 구조 진단 문의·상담 서비스에 적용됩니다.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-num">ARTICLE 01</div>
+    <div class="section-title">개인정보의 처리 목적</div>
+    <p>회사는 다음의 목적을 위하여 개인정보를 처리합니다. 처리하고 있는 개인정보는 다음의 목적 이외의 용도로는 이용되지 않으며, 이용 목적이 변경되는 경우에는 개인정보보호법 제18조에 따라 별도의 동의를 받는 등 필요한 조치를 이행합니다.</p>
+    <ul>
+      <li>경영 구조 진단 문의 접수 및 상담 응대</li>
+      <li>서비스 안내 및 제안서 발송</li>
+      <li>계약 체결 및 이행</li>
+      <li>고객 문의 처리 및 민원 대응</li>
+    </ul>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <div class="section-num">ARTICLE 02</div>
+    <div class="section-title">수집하는 개인정보 항목</div>
+    <p>회사는 문의·상담 접수를 위해 아래와 같은 개인정보를 수집합니다.</p>
+    <ul>
+      <li><strong>필수항목:</strong> 이름, 회사명, 직책/직함, 연락처(전화번호), 이메일 주소, 문의 내용</li>
+      <li><strong>선택항목:</strong> 상담 희망 내용, 현재 경영 현황 관련 기재 내용</li>
+      <li><strong>자동 수집항목:</strong> 접속 IP, 접속 일시, 서비스 이용 기록, 쿠키</li>
+    </ul>
+    <p class="note">※ 회사 홈페이지는 회원가입, 로그인, 결제, 배송 기능을 운영하지 않으며 이에 해당하는 개인정보는 수집하지 않습니다.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <div class="section-num">ARTICLE 03</div>
+    <div class="section-title">개인정보의 보유 및 이용기간</div>
+    <p>회사는 법령에 따른 개인정보 보유·이용기간 또는 정보주체로부터 개인정보를 수집 시에 동의받은 개인정보 보유·이용기간 내에서 개인정보를 처리·보유합니다.</p>
+    <ul>
+      <li><strong>문의·상담 접수 정보:</strong> 상담 완료 후 3년 (민원처리 및 분쟁해결 목적)</li>
+      <li><strong>계약 관련 정보:</strong> 계약 종료 후 5년 (상법 및 관련 법령 기준)</li>
+      <li><strong>접속 로그 등 자동 생성 정보:</strong> 3개월</li>
+    </ul>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <div class="section-num">ARTICLE 04</div>
+    <div class="section-title">개인정보의 제3자 제공</div>
+    <p>회사는 정보주체의 개인정보를 원칙적으로 외부에 제공하지 않습니다. 다만, 아래의 경우에는 예외로 합니다.</p>
+    <ul>
+      <li>정보주체가 사전에 동의한 경우</li>
+      <li>법령의 규정에 의거하거나 수사 목적으로 법령에 정해진 절차와 방법에 따라 수사기관의 요구가 있는 경우</li>
+    </ul>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <div class="section-num">ARTICLE 05</div>
+    <div class="section-title">개인정보 처리의 위탁</div>
+    <p>회사는 문의 접수를 위해 Google Forms(Google LLC)를 활용하고 있습니다. 문의 양식에 입력된 정보는 Google의 서버에 저장되며, 회사는 해당 정보를 상담 응대 목적으로만 활용합니다.</p>
+    <ul>
+      <li><strong>수탁사:</strong> Google LLC</li>
+      <li><strong>위탁 업무 내용:</strong> 온라인 문의 접수 양식 운영 및 데이터 저장</li>
+      <li><strong>보유 및 이용기간:</strong> 위탁 계약 종료 시까지</li>
+    </ul>
+    <p>Google의 개인정보 처리방침은 <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>에서 확인하실 수 있습니다.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <div class="section-num">ARTICLE 06</div>
+    <div class="section-title">정보주체의 권리와 행사 방법</div>
+    <p>정보주체는 회사에 대해 언제든지 다음 각 호의 개인정보 보호 관련 권리를 행사할 수 있습니다.</p>
+    <ul>
+      <li>개인정보 열람 요구</li>
+      <li>오류 등이 있을 경우 정정 요구</li>
+      <li>삭제 요구</li>
+      <li>처리 정지 요구</li>
+    </ul>
+    <p>위 권리 행사는 아래 개인정보 보호책임자에게 서면, 전화, 이메일을 통해 요청하실 수 있으며, 회사는 지체 없이 조치하겠습니다.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <div class="section-num">ARTICLE 07</div>
+    <div class="section-title">개인정보의 파기</div>
+    <p>회사는 개인정보 보유기간의 경과, 처리목적 달성 등 개인정보가 불필요하게 되었을 때에는 지체 없이 해당 개인정보를 파기합니다.</p>
+    <ul>
+      <li><strong>전자적 파일 형태:</strong> 복구 및 재생이 불가능한 기술적 방법으로 영구 삭제</li>
+      <li><strong>종이 문서 형태:</strong> 분쇄기로 분쇄하거나 소각</li>
+    </ul>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <div class="section-num">ARTICLE 08</div>
+    <div class="section-title">개인정보 자동 수집 장치의 설치·운영 및 거부</div>
+    <p>회사 홈페이지는 이용자의 정보를 수시로 저장하고 찾아내는 쿠키(cookie)를 운용할 수 있습니다. 쿠키는 웹사이트를 운영하는 서버가 이용자의 브라우저에 보내는 소량의 텍스트 파일로 이용자의 컴퓨터에 저장됩니다.</p>
+    <p>이용자는 웹브라우저의 설정을 통해 쿠키 저장을 거부할 수 있습니다. 단, 쿠키 저장을 거부할 경우 일부 서비스 이용에 어려움이 있을 수 있습니다.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <div class="section-num">ARTICLE 09</div>
+    <div class="section-title">개인정보 보호책임자</div>
+    <p>회사는 개인정보 처리에 관한 업무를 총괄해서 책임지고, 정보주체의 개인정보 관련 불만처리 및 피해구제 등을 위하여 아래와 같이 개인정보 보호책임자를 지정하고 있습니다.</p>
+    <div class="info-box">
+      <p><strong>개인정보 보호책임자</strong></p>
+      <p>성명 : 정의석</p>
+      <p>직책 : 대표이사</p>
+      <p>전화 : <a href="tel:02-2088-3808">02-2088-3808</a></p>
+      <p>이메일 : <a href="mailto:ceo.jes@compeners.co.kr">ceo.jes@compeners.co.kr</a></p>
+    </div>
+    <p style="margin-top:16px">기타 개인정보침해에 대한 신고 또는 상담이 필요하신 경우 아래 기관에 문의하시기 바랍니다.</p>
+    <ul>
+      <li>개인정보보호위원회 : <a href="https://www.pipc.go.kr" target="_blank" rel="noopener">www.pipc.go.kr</a> / 국번없이 182</li>
+      <li>한국인터넷진흥원 개인정보침해신고센터 : <a href="https://privacy.kisa.or.kr" target="_blank" rel="noopener">privacy.kisa.or.kr</a> / 국번없이 118</li>
+      <li>대검찰청 : <a href="https://www.spo.go.kr" target="_blank" rel="noopener">www.spo.go.kr</a> / 국번없이 1301</li>
+      <li>경찰청 : <a href="https://ecrm.cyber.go.kr" target="_blank" rel="noopener">ecrm.cyber.go.kr</a> / 국번없이 182</li>
+    </ul>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <div class="section-num">ARTICLE 10</div>
+    <div class="section-title">처리방침 변경 고지</div>
+    <p>이 개인정보처리방침은 시행일로부터 적용되며, 법령 및 방침에 따른 변경 내용의 추가, 삭제 및 정정이 있는 경우에는 변경사항의 시행일로부터 7일 전에 홈페이지를 통하여 고지할 것입니다.</p>
+  </div>
+
+  <div class="date-box">
+    <div class="date-item">
+      <span>공고일</span>
+      <strong>2024년 11월 19일</strong>
+    </div>
+    <div class="date-item">
+      <span>시행일</span>
+      <strong>2024년 11월 19일</strong>
+    </div>
+    <div class="date-item">
+      <span>작성 기관</span>
+      <strong>주식회사 컴퍼너스</strong>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="ft-logo">
+    <strong>COMPENERS</strong>
+    <span>주식회사 컴퍼너스 | 사업자등록번호 721-87-03463 | 대표이사 정의석, 최규영</span>
+  </div>
+  <div class="ft-copy">© 2026 Compeners. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
