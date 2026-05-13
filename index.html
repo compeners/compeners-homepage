@@ -10,11 +10,8 @@
 :root {
   --navy: #08111F;
   --navy2: #0D1B2E;
-  --navy3: #132238;
   --blue: #3D8EE8;
   --blue-light: #5AAAF0;
-  --blue-dim: rgba(61,142,232,0.15);
-  --blue-border: rgba(61,142,232,0.3);
   --white: #FFFFFF;
   --gray-100: #F5F7FA;
   --gray-200: #E8ECF2;
@@ -28,310 +25,128 @@
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
+body { font-family: var(--sans); background: #fff; color: var(--text-primary); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; word-break: keep-all; }
+a { color: inherit; text-decoration: none; }
 section { scroll-margin-top: 64px; }
-body { font-family: var(--sans); background: #fff; color: var(--text-primary); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+.inner { max-width: 1180px; margin: 0 auto; width: 100%; }
 
-/* ── NAV ── */
+/* NAV */
 nav {
   position: sticky; top: 0; z-index: 100;
   background: var(--navy);
   border-bottom: 1px solid rgba(255,255,255,0.06);
-  padding: 0 60px;
+}
+.nav-inner {
+  max-width: 1180px; margin: 0 auto;
+  padding: 0 24px;
   height: 64px;
   display: flex; align-items: center; justify-content: space-between;
 }
 .nav-logo { display: flex; flex-direction: column; gap: 4px; }
-.nav-logo-main {
-  color: #fff; font-size: 20px; font-weight: 900; letter-spacing: .18em;
-  position: relative; display: inline-block;
-}
-.nav-logo-main::after {
-  content: '';
-  position: absolute; bottom: -3px; left: 0;
-  width: 100%; height: 1.5px;
-  background: linear-gradient(90deg, var(--blue) 0%, transparent 100%);
-}
+.nav-logo-main { color: #fff; font-size: 20px; font-weight: 900; letter-spacing: .18em; position: relative; display: inline-block; }
+.nav-logo-main::after { content: ''; position: absolute; bottom: -3px; left: 0; width: 100%; height: 1.5px; background: linear-gradient(90deg, var(--blue) 0%, transparent 100%); }
 .nav-logo-sub { color: rgba(255,255,255,0.28); font-size: 9px; font-family: var(--mono); letter-spacing: .1em; }
 .nav-links { display: flex; gap: 32px; }
-.nav-links a { color: rgba(255,255,255,0.5); font-size: 12px; font-weight: 500; text-decoration: none; letter-spacing: .04em; transition: color .2s; }
+.nav-links a { color: rgba(255,255,255,0.5); font-size: 12px; font-weight: 500; letter-spacing: .04em; transition: color .2s; }
 .nav-links a:hover { color: rgba(255,255,255,0.9); }
-.nav-cta,
-.btn-main,
-.btn-sub,
-.cta-btn {
-  text-decoration: none;
-  display: inline-block;
-}
-.nav-cta {
-  background: rgba(61,142,232,0.16);
-  border: 1px solid rgba(90,170,240,0.82);
-  color: #EAF5FF;
-  font-family: var(--sans);
-  font-size: 13.5px; font-weight: 800;
-  padding: 10px 22px; border-radius: 8px;
-  cursor: pointer; letter-spacing: .045em;
-  box-shadow: 0 6px 18px rgba(61,142,232,0.18);
-  transition: background .2s, border-color .2s, transform .15s, box-shadow .2s;
-}
-.nav-cta:hover {
-  background: var(--blue);
-  border-color: var(--blue-light);
-  color: #fff;
-  transform: translateY(-1px);
-  box-shadow: 0 10px 26px rgba(61,142,232,0.28);
-}
+.nav-cta, .btn-main, .btn-sub, .cta-btn { text-decoration: none; display: inline-block; }
+.nav-cta { background: rgba(61,142,232,0.16); border: 1px solid rgba(90,170,240,0.82); color: #EAF5FF; font-size: 13.5px; font-weight: 800; padding: 10px 22px; border-radius: 8px; letter-spacing: .045em; box-shadow: 0 6px 18px rgba(61,142,232,0.18); transition: background .2s, border-color .2s, transform .15s, box-shadow .2s; }
+.nav-cta:hover { background: var(--blue); border-color: var(--blue-light); color: #fff; transform: translateY(-1px); box-shadow: 0 10px 26px rgba(61,142,232,0.28); }
 
-/* ── HERO ── */
-.hero {
-  background: var(--navy);
-  padding: 88px 60px 80px;
-  display: grid;
-  grid-template-columns: 1fr 400px;
-  gap: 64px;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-  min-height: 560px;
-}
-.hero-grid-bg {
-  position: absolute; inset: 0; pointer-events: none;
-  background-image:
-    linear-gradient(rgba(61,142,232,0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(61,142,232,0.07) 1px, transparent 1px);
-  background-size: 48px 48px;
-}
-.hero-glow {
-  position: absolute; top: -120px; left: -80px;
-  width: 500px; height: 500px;
-  background: radial-gradient(circle, rgba(61,142,232,0.08) 0%, transparent 70%);
-  pointer-events: none;
-}
-.hero-left { position: relative; z-index: 1; }
-.hero-eyebrow {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: rgba(61,142,232,0.1);
-  border: 1px solid rgba(61,142,232,0.28);
-  color: var(--blue-light);
-  font-family: var(--mono);
-  font-size: 9px; letter-spacing: .14em;
-  padding: 5px 14px; border-radius: 20px;
-  margin-bottom: 24px;
-}
+/* HERO */
+.hero { background: var(--navy); position: relative; overflow: hidden; }
+.hero-grid-bg { position: absolute; inset: 0; pointer-events: none; background-image: linear-gradient(rgba(61,142,232,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(61,142,232,0.07) 1px, transparent 1px); background-size: 48px 48px; }
+.hero-glow { position: absolute; top: -120px; left: calc(50% - 680px); width: 500px; height: 500px; background: radial-gradient(circle, rgba(61,142,232,0.08) 0%, transparent 70%); pointer-events: none; }
+.hero-inner { max-width: 1180px; margin: 0 auto; padding: 88px 24px 80px; display: grid; grid-template-columns: 1fr 400px; gap: 64px; align-items: center; min-height: 560px; position: relative; z-index: 1; }
+.hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: rgba(61,142,232,0.1); border: 1px solid rgba(61,142,232,0.28); color: var(--blue-light); font-family: var(--mono); font-size: 9px; letter-spacing: .14em; padding: 5px 14px; border-radius: 20px; margin-bottom: 24px; }
 .hero-eyebrow::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--blue); flex-shrink: 0; }
-.hero-h1 {
-  color: #fff;
-  font-size: 52px; font-weight: 900;
-  line-height: 1.1; letter-spacing: -.03em;
-  margin-bottom: 10px;
-}
+.hero-h1 { color: #fff; font-size: 52px; font-weight: 900; line-height: 1.1; letter-spacing: -.03em; margin-bottom: 10px; }
 .hero-h1 .accent { color: var(--blue-light); }
-.hero-en {
-  font-family: var(--mono);
-  color: rgba(255,255,255,0.2);
-  font-size: 11px; letter-spacing: .14em;
-  margin-bottom: 28px;
-}
-.hero-sub {
-  color: rgba(255,255,255,0.68);
-  font-size: 16px; line-height: 1.95;
-  margin-bottom: 36px; max-width: 460px;
-}
+.hero-en { font-family: var(--mono); color: rgba(255,255,255,0.2); font-size: 11px; letter-spacing: .14em; margin-bottom: 28px; }
+.hero-sub { color: rgba(255,255,255,0.68); font-size: 16px; line-height: 1.95; margin-bottom: 36px; max-width: 460px; }
 .hero-sub strong { color: rgba(255,255,255,0.88); font-weight: 500; }
 .hero-btns { display: flex; gap: 14px; align-items: center; }
-.btn-main {
-  background: var(--blue);
-  color: #fff; font-family: var(--sans);
-  font-size: 15px; font-weight: 800;
-  padding: 16px 30px; border-radius: 10px;
-  cursor: pointer; border: none;
-  letter-spacing: .015em;
-  box-shadow: 0 10px 28px rgba(61,142,232,0.28);
-  transition: background .2s, transform .15s, box-shadow .2s;
-}
-.btn-main:hover {
-  background: var(--blue-light);
-  transform: translateY(-2px);
-  box-shadow: 0 14px 34px rgba(61,142,232,0.34);
-}
-.btn-sub {
-  background: rgba(255,255,255,0.045);
-  border: 1px solid rgba(255,255,255,0.36);
-  color: rgba(255,255,255,0.84);
-  font-family: var(--sans);
-  font-size: 15px; font-weight: 700;
-  padding: 16px 26px; border-radius: 10px;
-  cursor: pointer;
-  transition: border-color .2s, color .2s, background .2s, transform .15s;
-}
-.btn-sub:hover {
-  border-color: rgba(255,255,255,0.62);
-  color: #fff;
-  background: rgba(255,255,255,0.09);
-  transform: translateY(-1px);
-}
-
-/* HERO DIAGRAM */
+.btn-main { background: var(--blue); color: #fff; font-size: 15px; font-weight: 800; padding: 16px 30px; border-radius: 10px; letter-spacing: .015em; box-shadow: 0 10px 28px rgba(61,142,232,0.28); transition: background .2s, transform .15s, box-shadow .2s; }
+.btn-main:hover { background: var(--blue-light); transform: translateY(-2px); box-shadow: 0 14px 34px rgba(61,142,232,0.34); }
+.btn-sub { background: rgba(255,255,255,0.045); border: 1px solid rgba(255,255,255,0.36); color: rgba(255,255,255,0.84); font-size: 15px; font-weight: 700; padding: 16px 26px; border-radius: 10px; transition: border-color .2s, color .2s, background .2s, transform .15s; }
+.btn-sub:hover { border-color: rgba(255,255,255,0.62); color: #fff; background: rgba(255,255,255,0.09); transform: translateY(-1px); }
 .hero-diagram { position: relative; z-index: 1; }
-.hd-item {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(61,142,232,0.18);
-  border-radius: 12px;
-  padding: 15px 18px;
-  display: flex; align-items: center; gap: 14px;
-  margin-bottom: 8px;
-  transition: border-color .2s, background .2s;
-}
+.hd-item { background: rgba(255,255,255,0.04); border: 1px solid rgba(61,142,232,0.18); border-radius: 12px; padding: 15px 18px; display: flex; align-items: center; gap: 14px; margin-bottom: 8px; transition: border-color .2s, background .2s; }
 .hd-item:hover { border-color: rgba(61,142,232,0.5); background: rgba(61,142,232,0.06); }
 .hd-item.final { background: rgba(61,142,232,0.12); border-color: rgba(61,142,232,0.45); }
-.hd-num {
-  width: 34px; height: 34px; border-radius: 50%;
-  background: rgba(61,142,232,0.15);
-  border: 1px solid rgba(61,142,232,0.35);
-  color: var(--blue-light);
-  font-family: var(--mono);
-  font-size: 13px; font-weight: 700;
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-}
+.hd-num { width: 34px; height: 34px; border-radius: 50%; background: rgba(61,142,232,0.15); border: 1px solid rgba(61,142,232,0.35); color: var(--blue-light); font-family: var(--mono); font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .hd-en { font-family: var(--mono); font-size: 10.5px; color: rgba(90,170,240,0.92); letter-spacing: .075em; margin-bottom: 3px; line-height: 1.45; }
 .hd-kr { font-size: 15.5px; color: rgba(255,255,255,0.9); font-weight: 700; line-height: 1.45; }
 .hd-arrow { text-align: center; color: rgba(61,142,232,0.36); font-size: 16px; padding-left: 34px; margin: 2px 0; }
 
-/* ── SECTION BASE ── */
-section { padding: 80px 60px; }
+/* SECTION BASE */
+.section { padding: 80px 24px; }
 .sl { font-family: var(--mono); font-size: 9px; color: var(--blue); font-weight: 500; letter-spacing: .16em; margin-bottom: 10px; }
 .sh2 { font-size: 32px; font-weight: 900; color: var(--text-primary); line-height: 1.25; margin-bottom: 8px; letter-spacing: -.025em; }
 .sh2-white { color: #fff; }
 .ssub { font-size: 16px; color: var(--text-secondary); line-height: 1.95; margin-bottom: 42px; max-width: 640px; }
 .ssub-white { color: rgba(255,255,255,0.64); }
+.pain, .bdaf { background: var(--gray-100); }
+.pos, .casesec, .location { background: #fff; }
+.service { background: var(--navy2); }
+.about { background: var(--navy); }
 
-/* ── PAIN POINT ── */
-.pain { background: var(--gray-100); }
 .pain-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-bottom: 18px; }
-.pc {
-  background: #fff;
-  border: 1px solid var(--gray-200);
-  border-radius: 12px; padding: 22px 18px;
-  transition: border-color .2s, box-shadow .2s;
-}
+.pc { background: #fff; border: 1px solid var(--gray-200); border-radius: 12px; padding: 22px 18px; transition: border-color .2s, box-shadow .2s; }
 .pc:hover { border-color: rgba(61,142,232,0.35); box-shadow: 0 4px 16px rgba(61,142,232,0.08); }
-.pc-q {
-  font-size: 16px; color: #0D1B2E; font-weight: 700;
-  line-height: 1.6; margin-bottom: 10px;
-  padding-bottom: 10px; border-bottom: 1px solid var(--gray-200);
-}
+.pc-q { font-size: 16px; color: #0D1B2E; font-weight: 700; line-height: 1.6; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid var(--gray-200); }
 .pc-a { font-size: 15px; color: var(--text-secondary); line-height: 1.9; }
-
 .pain-checks { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 22px; }
-.pck {
-  background: #fff; border: 1px solid var(--gray-200);
-  border-radius: 8px; padding: 11px 14px;
-  font-size: 15px; color: #374151;
-  display: flex; gap: 8px; align-items: flex-start; line-height: 1.7;
-}
+.pck { background: #fff; border: 1px solid var(--gray-200); border-radius: 8px; padding: 11px 14px; font-size: 15px; color: #374151; display: flex; gap: 8px; align-items: flex-start; line-height: 1.7; }
 .pck-icon { color: var(--blue); font-size: 8px; margin-top: 4px; flex-shrink: 0; }
-
-.pain-bottom {
-  background: var(--navy);
-  border-radius: 12px; padding: 24px 28px;
-  display: flex; align-items: center; justify-content: space-between;
-}
+.pain-bottom { background: var(--navy); border-radius: 12px; padding: 24px 28px; display: flex; align-items: center; justify-content: space-between; }
 .pb-main { color: #fff; font-size: 15.5px; font-weight: 700; line-height: 1.65; }
 .pb-sub { color: rgba(255,255,255,0.38); font-size: 12px; margin-top: 4px; }
 .pb-arrow { color: var(--blue-light); font-size: 22px; }
 
-/* ── POSITIONING ── */
-.pos { background: #fff; }
 .pos-table-wrap { overflow-x: auto; margin-bottom: 24px; }
 table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
-thead th {
-  padding: 10px 14px; text-align: center;
-  font-weight: 700; font-size: 10px; letter-spacing: .04em;
-  color: var(--gray-600); background: var(--gray-100);
-  border-bottom: 2px solid var(--gray-200);
-}
+thead th { padding: 10px 14px; text-align: center; font-weight: 700; font-size: 10px; letter-spacing: .04em; color: var(--gray-600); background: var(--gray-100); border-bottom: 2px solid var(--gray-200); }
 thead th.th-q { text-align: left; }
 thead th.th-us { background: var(--navy); color: var(--blue-light); font-family: var(--mono); letter-spacing: .08em; }
 tbody td { padding: 13px 15px; text-align: center; border-bottom: 1px solid var(--gray-100); color: var(--text-secondary); }
-tbody td.td-q { text-align: left; color: var(--gray-800); font-weight: 500; font-size: 14.5px; }
-tbody td.td-q-bold { text-align: left; color: var(--text-primary); font-weight: 700; font-size: 14.5px; }
+tbody td.td-q, tbody td.td-q-bold { text-align: left; font-size: 14.5px; }
+tbody td.td-q { color: var(--gray-800); font-weight: 500; }
+tbody td.td-q-bold { color: var(--text-primary); font-weight: 700; }
 tbody td.td-us { background: #F0F7FF; color: var(--gray-400); }
 tbody td.td-us-check { background: #EBF5FF; color: #1A6DB5; font-weight: 700; font-size: 15px; }
 tbody td.td-check { color: #10B981; font-size: 14px; }
 .pos-pills { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-.pos-pill {
-  background: var(--gray-100); border-radius: 10px;
-  padding: 18px 20px; font-size: 15.5px;
-  color: var(--text-secondary); line-height: 1.85;
-  border: 1px solid var(--gray-200);
-}
+.pos-pill { background: var(--gray-100); border-radius: 10px; padding: 18px 20px; font-size: 15.5px; color: var(--text-secondary); line-height: 1.85; border: 1px solid var(--gray-200); }
 .pos-pill strong { display: block; font-size: 16px; color: var(--text-primary); font-weight: 700; margin-bottom: 7px; }
 
-/* ── BDAF ── */
-.bdaf { background: var(--gray-100); }
 .bdaf-cards { display: grid; grid-template-columns: repeat(5,1fr); gap: 12px; }
-.bdaf-card {
-  background: #fff; border: 1px solid var(--gray-200);
-  border-radius: 12px; padding: 22px 16px;
-  transition: border-color .2s, transform .2s;
-}
+.bdaf-card { background: #fff; border: 1px solid var(--gray-200); border-radius: 12px; padding: 22px 16px; transition: border-color .2s, transform .2s; }
 .bdaf-card:hover { border-color: rgba(61,142,232,0.4); transform: translateY(-3px); }
 .bdaf-card.last { border-color: rgba(61,142,232,0.4); background: #EBF5FF; }
-.bdaf-step-num {
-  font-family: var(--mono); font-size: 11px; font-weight: 700;
-  color: #1A6DB5; letter-spacing: .12em; margin-bottom: 10px;
-}
-.bdaf-en {
-  font-family: var(--mono); font-size: 11px; color: #5A6678; font-weight: 500;
-  letter-spacing: .07em; margin-bottom: 10px; line-height: 1.6;
-}
+.bdaf-step-num { font-family: var(--mono); font-size: 11px; font-weight: 700; color: #1A6DB5; letter-spacing: .12em; margin-bottom: 10px; }
+.bdaf-en { font-family: var(--mono); font-size: 11px; color: #5A6678; font-weight: 500; letter-spacing: .07em; margin-bottom: 10px; line-height: 1.6; }
 .bdaf-kr { font-size: 15px; font-weight: 700; color: var(--text-primary); margin-bottom: 9px; }
 .bdaf-desc { font-size: 14.5px; color: var(--text-secondary); line-height: 1.9; }
 
-/* ── SERVICE PROCESS ── */
-.service { background: var(--navy2); }
 .service-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-.svc-card {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 14px; padding: 32px 28px;
-}
+.svc-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 32px 28px; }
 .svc-card:hover { border-color: rgba(61,142,232,0.3); }
-.svc-phase {
-  font-family: var(--mono); font-size: 9px;
-  color: var(--blue-light); letter-spacing: .12em; margin-bottom: 12px;
-}
+.svc-phase { font-family: var(--mono); font-size: 9px; color: var(--blue-light); letter-spacing: .12em; margin-bottom: 12px; }
 .svc-title { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 10px; line-height: 1.45; }
 .svc-desc { font-size: 15.5px; color: rgba(255,255,255,0.66); line-height: 1.95; margin-bottom: 22px; }
 .svc-items { display: flex; flex-direction: column; gap: 8px; }
-.svc-item {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.07);
-  border-radius: 7px; padding: 9px 13px;
-  font-size: 15px; color: rgba(255,255,255,0.78);
-  display: flex; align-items: center; gap: 8px;
-}
+.svc-item { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.07); border-radius: 7px; padding: 9px 13px; font-size: 15px; color: rgba(255,255,255,0.78); display: flex; align-items: center; gap: 8px; }
 .svc-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--blue); flex-shrink: 0; }
 
-/* ── CASE ── */
-.casesec { background: #fff; }
 .case-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
 .case-story { background: var(--gray-100); border-radius: 12px; padding: 28px 24px; }
-.case-quote {
-  font-size: 18px; font-weight: 700; color: var(--text-primary);
-  line-height: 1.45; margin-bottom: 16px;
-  padding-bottom: 16px; border-bottom: 1px solid var(--gray-200);
-}
+.case-quote { font-size: 18px; font-weight: 700; color: var(--text-primary); line-height: 1.45; margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid var(--gray-200); }
 .case-quote span { color: var(--blue); }
 .case-ctx { font-size: 15.5px; color: var(--text-secondary); line-height: 1.95; margin-bottom: 20px; }
 .case-find-title { font-family: var(--mono); font-size: 9px; color: var(--gray-400); letter-spacing: .1em; margin-bottom: 10px; }
 .case-finds { display: flex; flex-direction: column; gap: 8px; }
-.case-find {
-  background: #fff; border: 1px solid var(--gray-200);
-  border-radius: 7px; padding: 10px 13px;
-  font-size: 15px; color: var(--gray-800);
-  display: flex; gap: 8px; align-items: flex-start; line-height: 1.7;
-}
+.case-find { background: #fff; border: 1px solid var(--gray-200); border-radius: 7px; padding: 10px 13px; font-size: 15px; color: var(--gray-800); display: flex; gap: 8px; align-items: flex-start; line-height: 1.7; }
 .find-dot { width: 6px; height: 6px; border-radius: 50%; background: #EF4444; flex-shrink: 0; margin-top: 4px; }
 .case-result { display: flex; flex-direction: column; gap: 14px; }
 .res-before { background: #FEF2F2; border-radius: 10px; padding: 20px; }
@@ -340,206 +155,98 @@ tbody td.td-check { color: #10B981; font-size: 14px; }
 .res-arrow { text-align: center; color: var(--gray-400); font-size: 11px; font-family: var(--mono); }
 .res-after { background: #F0FDF4; border-radius: 10px; padding: 20px; }
 .res-after-tag { font-family: var(--mono); font-size: 9px; color: #166534; letter-spacing: .1em; margin-bottom: 8px; }
-.res-num { font-size: 32px; font-weight: 900; color: #15803D; margin-bottom: 4px; letter-spacing: -.02em; }
 .res-after-text { font-size: 15px; color: #166534; line-height: 1.9; }
-.res-insight {
-  background: #EBF5FF; border-radius: 10px; padding: 18px 20px;
-  font-size: 16px; color: #1A5FA8; font-weight: 700; line-height: 1.6;
-}
+.res-insight { background: #EBF5FF; border-radius: 10px; padding: 18px 20px; font-size: 16px; color: #1A5FA8; font-weight: 700; line-height: 1.6; }
 
-/* ── ABOUT ── */
-.about { background: var(--navy); }
 .about-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 48px; align-items: center; }
 .about-desc { font-size: 16px; color: rgba(255,255,255,0.66); line-height: 2.0; margin-bottom: 26px; }
-.about-ci {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 10px; padding: 16px 20px;
-  display: flex; align-items: center; gap: 16px;
-}
-.ci-logo-img {
-  width: 100px; height: auto;
-  object-fit: contain; flex-shrink: 0;
-  background: #fff; border-radius: 8px;
-  padding: 8px;
-}
+.about-ci { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 16px 20px; display: flex; align-items: center; gap: 16px; }
+.ci-logo-img { width: 72px; height: auto; max-height: 54px; object-fit: contain; flex-shrink: 0; background: #fff; border-radius: 8px; padding: 6px; }
 .ci-txt strong { display: block; color: #fff; font-size: 14px; margin-bottom: 3px; }
 .ci-txt span { font-size: 14.5px; color: rgba(255,255,255,0.62); line-height: 1.85; }
 .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.stat {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 10px; padding: 20px 18px;
-}
+.stat { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 20px 18px; }
+.stat-wide { grid-column: span 2; }
 .stat-n { font-size: 30px; font-weight: 900; color: var(--blue-light); margin-bottom: 4px; letter-spacing: -.02em; }
 .stat-l { font-size: 13px; color: rgba(255,255,255,0.62); line-height: 1.75; }
 .stat-q { font-family: var(--mono); font-size: 11px; color: rgba(255,255,255,0.7); line-height: 1.6; margin-bottom: 4px; font-weight: 500; }
 
-/* ── CEO MESSAGE ── */
-.ceo { background: var(--navy2); padding: 80px 60px; }
-.ceo-inner {
-  max-width: 760px; margin: 0 auto;
-  display: flex; gap: 40px; align-items: flex-start;
-}
-.ceo-quote-mark {
-  font-size: 96px; font-weight: 900; color: var(--blue);
-  line-height: .8; flex-shrink: 0; opacity: .5;
-  font-family: Georgia, serif; margin-top: -8px;
-}
+.ceo { background: var(--navy2); padding: 80px 24px; }
+.ceo-inner { max-width: 760px; margin: 0 auto; display: flex; gap: 40px; align-items: flex-start; }
+.ceo-quote-mark { font-size: 96px; font-weight: 900; color: var(--blue); line-height: .8; flex-shrink: 0; opacity: .5; font-family: Georgia, serif; margin-top: -8px; }
 .ceo-body { flex: 1; }
-.ceo-lead {
-  font-size: 20px; font-weight: 700; color: #fff;
-  line-height: 1.5; margin-bottom: 24px;
-  padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.1);
-}
-.ceo-text {
-  font-size: 16px; color: rgba(255,255,255,0.68);
-  line-height: 2.05; margin-bottom: 34px;
-}
+.ceo-lead { font-size: 20px; font-weight: 700; color: #fff; line-height: 1.5; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.ceo-text { font-size: 16px; color: rgba(255,255,255,0.68); line-height: 2.05; margin-bottom: 34px; }
 .ceo-sig { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; }
 .ceo-sig-name { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 4px; }
 .ceo-sig-title { font-size: 12px; color: rgba(255,255,255,0.35); font-family: var(--mono); letter-spacing: .04em; }
 
-/* ── CTA ── */
-.cta-sec { background: #EBF4FD; text-align: center; padding: 88px 60px; }
+.cta-sec { background: #EBF4FD; text-align: center; padding: 88px 24px; }
+.cta-inner { max-width: 760px; margin: 0 auto; }
 .cta-q { font-size: 30px; font-weight: 900; color: var(--text-primary); line-height: 1.35; margin-bottom: 14px; letter-spacing: -.025em; }
 .cta-q span { color: var(--blue); }
 .cta-body { font-size: 16px; color: var(--text-secondary); line-height: 1.9; margin-bottom: 38px; max-width: 560px; margin-left: auto; margin-right: auto; }
-.cta-btn {
-  display: inline-flex; align-items: center; justify-content: center;
-  background: var(--navy); color: #fff;
-  font-family: var(--sans); font-size: 16px; font-weight: 800;
-  padding: 18px 44px; border-radius: 12px;
-  cursor: pointer; border: 1px solid rgba(8,17,31,0.12); letter-spacing: .01em;
-  transition: background .2s, transform .15s, box-shadow .2s;
-  margin-bottom: 14px;
-  box-shadow: 0 12px 30px rgba(8,17,31,0.18);
-}
+.cta-btn { display: inline-flex; align-items: center; justify-content: center; background: var(--navy); color: #fff; font-size: 16px; font-weight: 800; padding: 18px 44px; border-radius: 12px; border: 1px solid rgba(8,17,31,0.12); letter-spacing: .01em; transition: background .2s, transform .15s, box-shadow .2s; margin-bottom: 14px; box-shadow: 0 12px 30px rgba(8,17,31,0.18); }
 .cta-btn:hover { background: var(--navy2); transform: translateY(-2px); box-shadow: 0 16px 38px rgba(8,17,31,0.24); }
 .cta-note { font-size: 12px; color: var(--gray-400); }
 
-/* ── LOCATION ── */
-.location { background: #fff; padding: 80px 60px; }
 .location-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
-.location-map {
-  border-radius: 12px; overflow: hidden;
-  height: 320px; border: 1px solid var(--gray-200);
-  background: var(--gray-100);
-  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;
-}
+.location-map { border-radius: 12px; overflow: hidden; height: 320px; border: 1px solid var(--gray-200); background: var(--gray-100); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; }
 .location-map-icon { font-size: 36px; }
 .location-map-addr { font-size: 15.5px; color: var(--gray-600); text-align: center; line-height: 1.85; }
-.location-map-btn {
-  display: inline-flex; align-items: center; gap: 6px;
-  background: #03C75A; color: #fff;
-  font-size: 12px; font-weight: 700; padding: 10px 20px;
-  border-radius: 6px; text-decoration: none;
-  letter-spacing: .02em; transition: opacity .2s;
-}
+.location-map-btn { display: inline-flex; align-items: center; gap: 6px; background: #03C75A; color: #fff; font-size: 12px; font-weight: 700; padding: 10px 20px; border-radius: 6px; letter-spacing: .02em; transition: opacity .2s; }
 .location-map-btn:hover { opacity: .85; }
-.location-info { display: flex; flex-direction: column; gap: 0; }
-.loc-item {
-  display: flex; gap: 16px; align-items: flex-start;
-  padding: 16px 0; border-bottom: 1px solid var(--gray-200);
-}
+.loc-item { display: flex; gap: 16px; align-items: flex-start; padding: 16px 0; border-bottom: 1px solid var(--gray-200); }
 .loc-item:first-child { padding-top: 0; }
 .loc-item:last-child { border-bottom: none; }
-.loc-icon {
-  width: 36px; height: 36px; border-radius: 8px;
-  background: var(--gray-100); border: 1px solid var(--gray-200);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 15px; flex-shrink: 0; margin-top: 1px;
-}
+.loc-icon { width: 36px; height: 36px; border-radius: 8px; background: var(--gray-100); border: 1px solid var(--gray-200); display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; margin-top: 1px; }
 .loc-label { font-family: var(--mono); font-size: 9px; color: var(--gray-400); letter-spacing: .1em; margin-bottom: 5px; }
 .loc-value { font-size: 15px; color: var(--text-primary); font-weight: 500; line-height: 1.9; }
-.loc-value a { color: var(--blue); text-decoration: none; }
+.loc-value a { color: var(--blue); }
 .loc-value a:hover { text-decoration: underline; }
 
-/* ── FOOTER ── */
-footer {
-  background: #050D19;
-  padding: 36px 60px;
-  display: flex; align-items: flex-start; justify-content: space-between;
-  border-top: 1px solid rgba(255,255,255,0.05);
-  gap: 40px; flex-wrap: wrap;
-}
+footer { background: #050D19; border-top: 1px solid rgba(255,255,255,0.05); }
+.footer-inner { max-width: 1180px; margin: 0 auto; padding: 36px 24px; display: flex; align-items: flex-start; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
 .ft-logo { flex: 1; min-width: 280px; }
 .ft-logo strong { color: rgba(255,255,255,0.86); font-size: 15px; letter-spacing: .1em; display: block; margin-bottom: 10px; }
 .ft-logo span { color: rgba(255,255,255,0.56); font-size: 12.5px; letter-spacing: .02em; margin-top: 3px; display: block; line-height: 1.85; }
 .ft-right { display: flex; flex-direction: column; align-items: flex-end; gap: 14px; flex-shrink: 0; }
 .ft-links { display: flex; gap: 20px; flex-wrap: wrap; justify-content: flex-end; }
-.ft-links a { color: rgba(255,255,255,0.58); font-size: 12.5px; font-weight: 500; text-decoration: none; transition: color .2s; }
+.ft-links a { color: rgba(255,255,255,0.58); font-size: 12.5px; font-weight: 500; transition: color .2s; }
 .ft-links a:hover { color: rgba(255,255,255,0.88); }
 .ft-copy { color: rgba(255,255,255,0.44); font-size: 12px; font-family: var(--mono); }
-
-/* ── FOOTER DROPDOWN ── */
 .ft-dropdown { position: relative; display: inline-block; }
-.ft-dropdown-btn {
-  background: transparent;
-  border: 1px solid rgba(255,255,255,0.2);
-  color: rgba(255,255,255,0.58); font-family: var(--sans);
-  font-size: 12px; padding: 5px 12px; border-radius: 4px;
-  cursor: pointer; transition: border-color .2s, color .2s;
-  white-space: nowrap;
-}
-.ft-dropdown-btn:hover { border-color: rgba(255,255,255,0.5); color: rgba(255,255,255,0.7); }
-.ft-dropdown-menu {
-  display: none; position: absolute;
-  bottom: calc(100% + 8px); right: 0;
-  background: #0D1B2E; border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 10px; padding: 8px;
-  min-width: 180px; box-shadow: 0 -8px 24px rgba(0,0,0,0.4);
-  z-index: 200;
-}
+.ft-dropdown-btn { background: transparent; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.58); font-family: var(--sans); font-size: 12px; padding: 5px 12px; border-radius: 4px; cursor: pointer; white-space: nowrap; }
+.ft-dropdown-menu { display: none; position: absolute; bottom: calc(100% + 8px); right: 0; background: #0D1B2E; border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; padding: 8px; min-width: 180px; box-shadow: 0 -8px 24px rgba(0,0,0,0.4); z-index: 200; }
 .ft-dropdown:hover .ft-dropdown-menu { display: block; }
-.ft-dropdown-menu a {
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 9px 12px; border-radius: 6px; text-decoration: none;
-  transition: background .15s; color: inherit;
-}
+.ft-dropdown-menu a, .ft-dd-coming { display: flex; justify-content: space-between; align-items: center; padding: 9px 12px; border-radius: 6px; color: inherit; }
 .ft-dropdown-menu a:hover { background: rgba(255,255,255,0.06); }
 .ft-dd-label { font-size: 13px; color: rgba(255,255,255,0.82); font-weight: 600; }
 .ft-dd-sub { font-size: 11px; color: rgba(255,255,255,0.5); font-family: var(--mono); letter-spacing: .04em; }
 .ft-dd-divider { height: 1px; background: rgba(255,255,255,0.08); margin: 6px 0; }
-.ft-dd-coming {
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 9px 12px; border-radius: 6px;
-  opacity: .45; cursor: default;
-}
-.ft-dd-coming .ft-dd-label { color: rgba(255,255,255,0.5); }
-.ft-dd-coming .ft-dd-sub { color: rgba(255,255,255,0.3); }
+.ft-dd-coming { opacity: .45; cursor: default; }
 
-/* ── RESPONSIVE ── */
 @media (max-width: 1200px) {
-  .hero { grid-template-columns: 1fr 370px; gap: 48px; }
+  .hero-inner { grid-template-columns: 1fr 370px; gap: 48px; }
   .bdaf-cards { grid-template-columns: repeat(3, 1fr); }
 }
 @media (max-width: 900px) {
-  nav { padding: 0 24px; }
+  .nav-inner { padding: 0 24px; }
   .nav-links { display: none; }
-  .hero { grid-template-columns: 1fr; padding: 64px 24px 56px; min-height: auto; }
+  .hero-inner { grid-template-columns: 1fr; padding: 64px 24px 56px; min-height: auto; }
   .hero-diagram { display: none; }
   .hero-h1 { font-size: 40px; }
   .sh2 { font-size: 26px; }
-  section { padding: 60px 24px; }
-  .pain-cards { grid-template-columns: 1fr; }
-  .pain-checks { grid-template-columns: 1fr; }
-  .pos-pills { grid-template-columns: 1fr; }
+  .section { padding: 60px 24px; }
+  .pain-cards, .pain-checks, .pos-pills, .service-grid, .case-layout, .about-grid, .location-grid { grid-template-columns: 1fr; }
   .bdaf-cards { grid-template-columns: repeat(2, 1fr); }
-  .service-grid { grid-template-columns: 1fr; }
-  .case-layout { grid-template-columns: 1fr; }
-  .about-grid { grid-template-columns: 1fr; }
   .about-stats { grid-template-columns: 1fr 1fr; }
   .ceo { padding: 60px 24px; }
   .ceo-inner { flex-direction: column; gap: 16px; }
   .ceo-quote-mark { font-size: 64px; }
   .ceo-lead { font-size: 16px; }
-  .location { padding: 60px 24px; }
-  .location-grid { grid-template-columns: 1fr; }
-  footer { padding: 28px 24px; flex-direction: column; gap: 24px; align-items: flex-start; }
+  .footer-inner { padding: 28px 24px; flex-direction: column; gap: 24px; align-items: flex-start; }
   .ft-right { align-items: flex-start; }
-  .ft-links a { font-size: 12.5px; }
-  .ft-logo span { font-size: 12px; }
   .cta-sec { padding: 64px 24px; }
 }
 @media (max-width: 640px) {
@@ -548,10 +255,10 @@ footer {
   .hero-btns { flex-direction: column; align-items: stretch; }
   .btn-main, .btn-sub { width: 100%; text-align: center; }
   .sh2 { font-size: 23px; }
-  .bdaf-cards { grid-template-columns: 1fr; }
-  .about-stats { grid-template-columns: 1fr; }
+  .bdaf-cards, .about-stats { grid-template-columns: 1fr; }
+  .stat-wide { grid-column: auto; }
+  .about-stats .stat { width: 100%; }
   .cta-q { font-size: 23px; }
-  .ft-links { flex-wrap: wrap; gap: 12px; }
   .ft-copy { display: none; }
   .hero-sub, .ssub, .cta-body, .about-desc, .ceo-text { font-size: 15px; }
   .cta-btn { width: 100%; max-width: 340px; font-size: 15px; padding: 16px 26px; }
@@ -559,431 +266,172 @@ footer {
   table { font-size: 13px; }
   tbody td.td-q, tbody td.td-q-bold { font-size: 13px; }
 }
-
-/* Divider line */
-.section-divider { height: 1px; background: var(--gray-200); margin: 0 60px; }
 </style>
 </head>
 <body>
-
-<!-- NAV -->
 <nav>
-  <div class="nav-logo">
-    <div class="nav-logo-main">COMPENERS</div>
-    <div class="nav-logo-sub">Business Decision Architecture</div>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <div class="nav-logo-main">COMPENERS</div>
+      <div class="nav-logo-sub">Business Decision Architecture</div>
+    </div>
+    <div class="nav-links">
+      <a href="#target">문제와 해법</a>
+      <a href="#service">서비스</a>
+      <a href="#bdaf">BDAF</a>
+      <a href="#about">회사소개</a>
+    </div>
+    <a href="https://forms.gle/bnhZoEFGUXV4CzKm8" class="nav-cta" target="_blank" rel="noopener">진단 문의</a>
   </div>
-  <div class="nav-links">
-    <a href="#target">문제와 해법</a>
-    <a href="#service">서비스</a>
-    <a href="#bdaf">BDAF</a>
-    <a href="#about">회사소개</a>
-  </div>
-  <a href="https://forms.gle/bnhZoEFGUXV4CzKm8" class="nav-cta" target="_blank" rel="noopener">진단 문의</a>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-grid-bg"></div>
   <div class="hero-glow"></div>
-  <div class="hero-left">
-    <div class="hero-eyebrow">BUSINESS DECISION ARCHITECTURE FRAMEWORK</div>
-    <h1 class="hero-h1">경영 판단은<br><span class="accent">구조</span>에서 나온다</h1>
-    <div class="hero-en">Decisions come from structure.</div>
-    <p class="hero-sub">
-      컴퍼너스는 기업의 <strong>경영 판단 구조를 설계</strong>합니다.<br>
-      세무·회계·ERP가 데이터를 남긴다면,<br>
-      컴퍼너스는 그 데이터를 <strong>판단 가능한 기준으로 바꿉니다.</strong>
-    </p>
-    <div class="hero-btns">
-      <a href="https://forms.gle/bnhZoEFGUXV4CzKm8" class="btn-main" target="_blank" rel="noopener">경영 구조 진단 문의하기 →</a>
-      <a href="#bdaf" class="btn-sub">BDAF가 무엇인가요?</a>
-    </div>
-  </div>
-  <div class="hero-diagram">
-    <div class="hd-item">
-      <div class="hd-num">1</div>
-      <div><div class="hd-en">STRUCTURE DIAGNOSIS</div><div class="hd-kr">기업 구조 진단</div></div>
-    </div>
-    <div class="hd-arrow">↓</div>
-    <div class="hd-item">
-      <div class="hd-num">2</div>
-      <div><div class="hd-en">KPI SELECTION</div><div class="hd-kr">판단 기준 지표 설계</div></div>
-    </div>
-    <div class="hd-arrow">↓</div>
-    <div class="hd-item">
-      <div class="hd-num">3</div>
-      <div><div class="hd-en">BUSINESS OPERATING SYSTEM</div><div class="hd-kr">경영 운영 시스템</div></div>
-    </div>
-    <div class="hd-arrow">↓</div>
-    <div class="hd-item">
-      <div class="hd-num">4</div>
-      <div><div class="hd-en">BUSINESS ALERT SYSTEM</div><div class="hd-kr">경영 경보 체계</div></div>
-    </div>
-    <div class="hd-arrow">↓</div>
-    <div class="hd-item final">
-      <div class="hd-num">5</div>
-      <div><div class="hd-en">DECISION FRAMEWORK</div><div class="hd-kr">경영 판단 프레임</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- PAIN POINT -->
-<section class="pain" id="target">
-  <div class="sl">PAIN POINT</div>
-  <h2 class="sh2">대표님, 이런 질문을 해본 적 있으신가요?</h2>
-  <p class="ssub">문제는 사람도, 노력도, 숫자의 부족도 아닐 수 있습니다.<br>문제는 구조가 보이지 않는 데서 시작됩니다.</p>
-  <div class="pain-cards">
-    <div class="pc">
-      <div class="pc-q">"매출은 늘었는데,<br>왜 통장에 돈이 없지?"</div>
-      <div class="pc-a">거래 구조·원가 구조·현금흐름 구조가 연결되어 있지 않기 때문일 수 있습니다.</div>
-    </div>
-    <div class="pc">
-      <div class="pc-q">"직원이 늘었는데,<br>왜 이익은 줄어드는 걸까?"</div>
-      <div class="pc-a">비용 구조와 수익 구조가 연결되지 않은 채 운영되고 있을 수 있습니다.</div>
-    </div>
-    <div class="pc">
-      <div class="pc-q">"열심히 하는데<br>왜 회사가 제자리걸음이지?"</div>
-      <div class="pc-a">실행의 문제가 아니라, 판단 기준이 없는 문제일 수 있습니다.</div>
-    </div>
-  </div>
-  <div class="pain-checks">
-    <div class="pck"><span class="pck-icon">◆</span><span>사업장별 수익성이 보이십니까?</span></div>
-    <div class="pck"><span class="pck-icon">◆</span><span>직원 1명이 만드는 매출을 알고 있습니까?</span></div>
-    <div class="pck"><span class="pck-icon">◆</span><span>상위 거래처 의존도는 어느 정도입니까?</span></div>
-    <div class="pck"><span class="pck-icon">◆</span><span>매월 어떤 숫자를 보고 판단해야 하는지 정해져 있습니까?</span></div>
-  </div>
-  <div class="pain-bottom">
-    <div>
-      <div class="pb-main">이 질문들의 공통점은 하나입니다. 구조가 보이지 않는다는 것.</div>
-      <div class="pb-sub">컴퍼너스는 그 구조를 설계합니다.</div>
-    </div>
-    <div class="pb-arrow">→</div>
-  </div>
-</section>
-
-<!-- POSITIONING -->
-<section class="pos">
-  <div class="sl">POSITIONING</div>
-  <h2 class="sh2">우리는 세무사도, 회계사도, ERP도 아닙니다.</h2>
-  <p class="ssub">세무·회계·ERP가 필요한 이유는 분명합니다.<br>다만 컴퍼너스가 다루는 질문은 다릅니다.</p>
-  <div class="pos-table-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th class="th-q" style="width:30%">핵심 질문</th>
-          <th>세무사</th>
-          <th>회계사</th>
-          <th>CFO 서비스</th>
-          <th>ERP</th>
-          <th class="th-us">COMPENERS</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="td-q">세금이 맞나요?</td>
-          <td class="td-check">✓</td><td>—</td><td>—</td><td>—</td><td class="td-us">—</td>
-        </tr>
-        <tr>
-          <td class="td-q">장부가 맞나요?</td>
-          <td>—</td><td class="td-check">✓</td><td>—</td><td>—</td><td class="td-us">—</td>
-        </tr>
-        <tr>
-          <td class="td-q">자금이 괜찮나요?</td>
-          <td>—</td><td>—</td><td class="td-check">✓</td><td>—</td><td class="td-us">—</td>
-        </tr>
-        <tr>
-          <td class="td-q">데이터가 저장됐나요?</td>
-          <td>—</td><td>—</td><td>—</td><td class="td-check">✓</td><td class="td-us">—</td>
-        </tr>
-        <tr>
-          <td class="td-q-bold">이 구조에서 어떤 판단을 해야 하나요?</td>
-          <td>—</td><td>—</td><td>—</td><td>—</td><td class="td-us-check">✓</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="pos-pills">
-    <div class="pos-pill">
-      <strong>컴퍼너스가 다루는 영역</strong>
-      세무·회계·ERP가 결과를 기록한다면,<br>컴퍼너스는 그 결과가 만들어지는 구조를 봅니다.
-    </div>
-    <div class="pos-pill">
-      <strong>대표가 느끼는 변화</strong>
-      숫자를 해석하는 데 쓰던 에너지를 줄이고,<br>설계된 기준 위에서 더 빠르고 일관된 결정을 내릴 수 있습니다.
-    </div>
-  </div>
-</section>
-
-<!-- BDAF -->
-<section class="bdaf" id="bdaf">
-  <div class="sl">BDAF — 5 SYSTEMS</div>
-  <h2 class="sh2">컴퍼너스의 5단계 경영 판단 설계 시스템</h2>
-  <p class="ssub">Business Decision Architecture Framework — 진단부터 판단 구조 완성까지</p>
-  <div class="bdaf-cards">
-    <div class="bdaf-card">
-      <div class="bdaf-step-num">STEP 01</div>
-      <div class="bdaf-en">STRUCTURE<br>DIAGNOSIS</div>
-      <div class="bdaf-kr">기업 구조 진단</div>
-      <div class="bdaf-desc">수익·비용·현금흐름·조직의 구조를 해부합니다.</div>
-    </div>
-    <div class="bdaf-card">
-      <div class="bdaf-step-num">STEP 02</div>
-      <div class="bdaf-en">KPI<br>SELECTION</div>
-      <div class="bdaf-kr">판단 기준 지표 설계</div>
-      <div class="bdaf-desc">대표가 봐야 할 핵심 지표를 선정합니다.</div>
-    </div>
-    <div class="bdaf-card">
-      <div class="bdaf-step-num">STEP 03</div>
-      <div class="bdaf-en">BUSINESS<br>OPERATING SYSTEM</div>
-      <div class="bdaf-kr">경영 운영 시스템</div>
-      <div class="bdaf-desc">경영 캘린더, 보고 체계, 데이터 흐름을 설계합니다.</div>
-    </div>
-    <div class="bdaf-card">
-      <div class="bdaf-step-num">STEP 04</div>
-      <div class="bdaf-en">BUSINESS<br>ALERT SYSTEM</div>
-      <div class="bdaf-kr">경영 경보 체계</div>
-      <div class="bdaf-desc">구조 이탈 신호를 감지하는 기준을 만듭니다.</div>
-    </div>
-    <div class="bdaf-card last">
-      <div class="bdaf-step-num">STEP 05</div>
-      <div class="bdaf-en">DECISION<br>FRAMEWORK</div>
-      <div class="bdaf-kr">경영 판단 프레임</div>
-      <div class="bdaf-desc">대표가 반복적으로 활용할 의사결정 기준을 제공합니다.</div>
-    </div>
-  </div>
-</section>
-
-<!-- SERVICE PROCESS -->
-<section class="service" id="service">
-  <div class="sl">SERVICE PROCESS</div>
-  <h2 class="sh2 sh2-white">진단에서 운영까지 이어지는 2단계 서비스</h2>
-  <p class="ssub ssub-white">컴퍼너스는 한 번의 분석으로 끝나지 않습니다.<br>설계된 구조가 실제 운영 속에서 작동하도록 함께 합니다.</p>
-  <div class="service-grid">
-    <div class="svc-card">
-      <div class="svc-phase">PHASE 01 — DIAGNOSE</div>
-      <div class="svc-title">경영 구조 분석 및 기준 설계</div>
-      <div class="svc-desc">회사의 매출·손익·현금흐름·비용 구조를 분석하고, 대표가 매월 확인해야 할 핵심 KPI와 경영관리 기준을 설계합니다.</div>
-      <div class="svc-items">
-        <div class="svc-item"><div class="svc-dot"></div>매출 구조 분석</div>
-        <div class="svc-item"><div class="svc-dot"></div>손익 구조 분석</div>
-        <div class="svc-item"><div class="svc-dot"></div>현금흐름 구조 분석</div>
-        <div class="svc-item"><div class="svc-dot"></div>비용 구조 분석</div>
-        <div class="svc-item"><div class="svc-dot"></div>핵심 KPI 설계</div>
-        <div class="svc-item"><div class="svc-dot"></div>경영 구조 진단 리포트</div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-eyebrow">BUSINESS DECISION ARCHITECTURE FRAMEWORK</div>
+      <h1 class="hero-h1">경영 판단은<br><span class="accent">구조</span>에서 나온다</h1>
+      <div class="hero-en">Decisions come from structure.</div>
+      <p class="hero-sub">컴퍼너스는 기업의 <strong>경영 판단 구조를 설계</strong>합니다.<br>세무·회계·ERP가 데이터를 남긴다면,<br>컴퍼너스는 그 데이터를 <strong>판단 가능한 기준으로 바꿉니다.</strong></p>
+      <div class="hero-btns">
+        <a href="https://forms.gle/bnhZoEFGUXV4CzKm8" class="btn-main" target="_blank" rel="noopener">경영 구조 진단 문의하기 →</a>
+        <a href="#bdaf" class="btn-sub">BDAF가 무엇인가요?</a>
       </div>
     </div>
-    <div class="svc-card">
-      <div class="svc-phase">PHASE 02 — OPERATE</div>
-      <div class="svc-title">경영관리 운영</div>
-      <div class="svc-desc">설계된 기준을 바탕으로 월 단위 경영관리 운영을 진행합니다. 핵심 지표, 경영 캘린더, 리포트, 경보 기준을 통해 회사가 반복적으로 점검되고 개선되도록 합니다.</div>
-      <div class="svc-items">
-        <div class="svc-item"><div class="svc-dot"></div>월간 경영 리포트</div>
-        <div class="svc-item"><div class="svc-dot"></div>경영 캘린더 운영</div>
-        <div class="svc-item"><div class="svc-dot"></div>핵심 지표 모니터링</div>
-        <div class="svc-item"><div class="svc-dot"></div>경영 경보 기준 운영</div>
-        <div class="svc-item"><div class="svc-dot"></div>의사결정 회의 지원</div>
-        <div class="svc-item"><div class="svc-dot"></div>운영 기준 보완</div>
-      </div>
+    <div class="hero-diagram">
+      <div class="hd-item"><div class="hd-num">1</div><div><div class="hd-en">STRUCTURE DIAGNOSIS</div><div class="hd-kr">기업 구조 진단</div></div></div>
+      <div class="hd-arrow">↓</div>
+      <div class="hd-item"><div class="hd-num">2</div><div><div class="hd-en">KPI SELECTION</div><div class="hd-kr">판단 기준 지표 설계</div></div></div>
+      <div class="hd-arrow">↓</div>
+      <div class="hd-item"><div class="hd-num">3</div><div><div class="hd-en">BUSINESS OPERATING SYSTEM</div><div class="hd-kr">경영 운영 시스템</div></div></div>
+      <div class="hd-arrow">↓</div>
+      <div class="hd-item"><div class="hd-num">4</div><div><div class="hd-en">BUSINESS ALERT SYSTEM</div><div class="hd-kr">경영 경보 체계</div></div></div>
+      <div class="hd-arrow">↓</div>
+      <div class="hd-item final"><div class="hd-num">5</div><div><div class="hd-en">DECISION FRAMEWORK</div><div class="hd-kr">경영 판단 프레임</div></div></div>
     </div>
   </div>
 </section>
 
-<!-- CEO MESSAGE -->
+<section class="section pain" id="target">
+  <div class="inner">
+    <div class="sl">PAIN POINT</div>
+    <h2 class="sh2">대표님, 이런 질문을 해본 적 있으신가요?</h2>
+    <p class="ssub">문제는 사람도, 노력도, 숫자의 부족도 아닐 수 있습니다.<br>문제는 구조가 보이지 않는 데서 시작됩니다.</p>
+    <div class="pain-cards">
+      <div class="pc"><div class="pc-q">"매출은 늘었는데,<br>왜 통장에 돈이 없지?"</div><div class="pc-a">거래 구조·원가 구조·현금흐름 구조가 연결되어 있지 않기 때문일 수 있습니다.</div></div>
+      <div class="pc"><div class="pc-q">"직원이 늘었는데,<br>왜 이익은 줄어드는 걸까?"</div><div class="pc-a">비용 구조와 수익 구조가 연결되지 않은 채 운영되고 있을 수 있습니다.</div></div>
+      <div class="pc"><div class="pc-q">"열심히 하는데<br>왜 회사가 제자리걸음이지?"</div><div class="pc-a">실행의 문제가 아니라, 판단 기준이 없는 문제일 수 있습니다.</div></div>
+    </div>
+    <div class="pain-checks">
+      <div class="pck"><span class="pck-icon">◆</span><span>사업장별 수익성이 보이십니까?</span></div>
+      <div class="pck"><span class="pck-icon">◆</span><span>직원 1명이 만드는 매출을 알고 있습니까?</span></div>
+      <div class="pck"><span class="pck-icon">◆</span><span>상위 거래처 의존도는 어느 정도입니까?</span></div>
+      <div class="pck"><span class="pck-icon">◆</span><span>매월 어떤 숫자를 보고 판단해야 하는지 정해져 있습니까?</span></div>
+    </div>
+    <div class="pain-bottom"><div><div class="pb-main">이 질문들의 공통점은 하나입니다. 구조가 보이지 않는다는 것.</div><div class="pb-sub">컴퍼너스는 그 구조를 설계합니다.</div></div><div class="pb-arrow">→</div></div>
+  </div>
+</section>
+
+<section class="section pos">
+  <div class="inner">
+    <div class="sl">POSITIONING</div>
+    <h2 class="sh2">우리는 세무사도, 회계사도, ERP도 아닙니다.</h2>
+    <p class="ssub">세무·회계·ERP가 필요한 이유는 분명합니다.<br>다만 컴퍼너스가 다루는 질문은 다릅니다.</p>
+    <div class="pos-table-wrap">
+      <table>
+        <thead><tr><th class="th-q" style="width:30%">핵심 질문</th><th>세무사</th><th>회계사</th><th>CFO 서비스</th><th>ERP</th><th class="th-us">COMPENERS</th></tr></thead>
+        <tbody>
+          <tr><td class="td-q">세금이 맞나요?</td><td class="td-check">✓</td><td>—</td><td>—</td><td>—</td><td class="td-us">—</td></tr>
+          <tr><td class="td-q">장부가 맞나요?</td><td>—</td><td class="td-check">✓</td><td>—</td><td>—</td><td class="td-us">—</td></tr>
+          <tr><td class="td-q">자금이 괜찮나요?</td><td>—</td><td>—</td><td class="td-check">✓</td><td>—</td><td class="td-us">—</td></tr>
+          <tr><td class="td-q">데이터가 저장됐나요?</td><td>—</td><td>—</td><td>—</td><td class="td-check">✓</td><td class="td-us">—</td></tr>
+          <tr><td class="td-q-bold">이 구조에서 어떤 판단을 해야 하나요?</td><td>—</td><td>—</td><td>—</td><td>—</td><td class="td-us-check">✓</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="pos-pills">
+      <div class="pos-pill"><strong>컴퍼너스가 다루는 영역</strong>세무·회계·ERP가 결과를 기록한다면,<br>컴퍼너스는 그 결과가 만들어지는 구조를 봅니다.</div>
+      <div class="pos-pill"><strong>대표가 느끼는 변화</strong>숫자를 해석하는 데 쓰던 에너지를 줄이고,<br>설계된 기준 위에서 더 빠르고 일관된 결정을 내릴 수 있습니다.</div>
+    </div>
+  </div>
+</section>
+
+<section class="section bdaf" id="bdaf">
+  <div class="inner">
+    <div class="sl">BDAF — 5 SYSTEMS</div>
+    <h2 class="sh2">컴퍼너스의 5단계 경영 판단 설계 시스템</h2>
+    <p class="ssub">Business Decision Architecture Framework — 진단부터 판단 구조 완성까지</p>
+    <div class="bdaf-cards">
+      <div class="bdaf-card"><div class="bdaf-step-num">STEP 01</div><div class="bdaf-en">STRUCTURE<br>DIAGNOSIS</div><div class="bdaf-kr">기업 구조 진단</div><div class="bdaf-desc">수익·비용·현금흐름·조직의 구조를 해부합니다.</div></div>
+      <div class="bdaf-card"><div class="bdaf-step-num">STEP 02</div><div class="bdaf-en">KPI<br>SELECTION</div><div class="bdaf-kr">판단 기준 지표 설계</div><div class="bdaf-desc">대표가 봐야 할 핵심 지표를 선정합니다.</div></div>
+      <div class="bdaf-card"><div class="bdaf-step-num">STEP 03</div><div class="bdaf-en">BUSINESS<br>OPERATING SYSTEM</div><div class="bdaf-kr">경영 운영 시스템</div><div class="bdaf-desc">경영 캘린더, 보고 체계, 데이터 흐름을 설계합니다.</div></div>
+      <div class="bdaf-card"><div class="bdaf-step-num">STEP 04</div><div class="bdaf-en">BUSINESS<br>ALERT SYSTEM</div><div class="bdaf-kr">경영 경보 체계</div><div class="bdaf-desc">구조 이탈 신호를 감지하는 기준을 만듭니다.</div></div>
+      <div class="bdaf-card last"><div class="bdaf-step-num">STEP 05</div><div class="bdaf-en">DECISION<br>FRAMEWORK</div><div class="bdaf-kr">경영 판단 프레임</div><div class="bdaf-desc">대표가 반복적으로 활용할 의사결정 기준을 제공합니다.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section service" id="service">
+  <div class="inner">
+    <div class="sl">SERVICE PROCESS</div>
+    <h2 class="sh2 sh2-white">진단에서 운영까지 이어지는 2단계 서비스</h2>
+    <p class="ssub ssub-white">컴퍼너스는 한 번의 분석으로 끝나지 않습니다.<br>설계된 구조가 실제 운영 속에서 작동하도록 함께 합니다.</p>
+    <div class="service-grid">
+      <div class="svc-card"><div class="svc-phase">PHASE 01 — DIAGNOSE</div><div class="svc-title">경영 구조 분석 및 기준 설계</div><div class="svc-desc">회사의 매출·손익·현금흐름·비용 구조를 분석하고, 대표가 매월 확인해야 할 핵심 KPI와 경영관리 기준을 설계합니다.</div><div class="svc-items"><div class="svc-item"><div class="svc-dot"></div>매출 구조 분석</div><div class="svc-item"><div class="svc-dot"></div>손익 구조 분석</div><div class="svc-item"><div class="svc-dot"></div>현금흐름 구조 분석</div><div class="svc-item"><div class="svc-dot"></div>비용 구조 분석</div><div class="svc-item"><div class="svc-dot"></div>핵심 KPI 설계</div><div class="svc-item"><div class="svc-dot"></div>경영 구조 진단 리포트</div></div></div>
+      <div class="svc-card"><div class="svc-phase">PHASE 02 — OPERATE</div><div class="svc-title">경영관리 운영</div><div class="svc-desc">설계된 기준을 바탕으로 월 단위 경영관리 운영을 진행합니다. 핵심 지표, 경영 캘린더, 리포트, 경보 기준을 통해 회사가 반복적으로 점검되고 개선되도록 합니다.</div><div class="svc-items"><div class="svc-item"><div class="svc-dot"></div>월간 경영 리포트</div><div class="svc-item"><div class="svc-dot"></div>경영 캘린더 운영</div><div class="svc-item"><div class="svc-dot"></div>핵심 지표 모니터링</div><div class="svc-item"><div class="svc-dot"></div>경영 경보 기준 운영</div><div class="svc-item"><div class="svc-dot"></div>의사결정 회의 지원</div><div class="svc-item"><div class="svc-dot"></div>운영 기준 보완</div></div></div>
+    </div>
+  </div>
+</section>
+
 <section class="ceo">
   <div class="ceo-inner">
     <div class="ceo-quote-mark">"</div>
     <div class="ceo-body">
       <p class="ceo-lead">숫자는 많아졌지만, 판단은 여전히 대표 한 사람에게 남아 있습니다.</p>
       <p class="ceo-text">많은 기업은 매출, 비용, 재무제표, ERP 데이터를 가지고 있습니다.<br>하지만 정작 중요한 순간에는 여전히 대표의 경험과 감에 의존해 판단합니다.<br><br>컴퍼너스는 이 문제를 해결하기 위해 시작되었습니다.<br><br>우리는 세무 신고를 대신하거나, 장부를 정리하거나, ERP를 설치하는 회사가 아닙니다.<br>컴퍼너스는 기업의 경영 판단 구조를 설계합니다.<br><br>경영 판단은 구조에서 나옵니다.<br>컴퍼너스는 고객사가 숫자를 보는 데서 멈추지 않고,<br>그 숫자가 만들어지는 구조를 이해하고 더 정확한 결정을 내릴 수 있도록 돕겠습니다.</p>
-      <div class="ceo-sig">
-        <div class="ceo-sig-name">정의석 · 최규영</div>
-        <div class="ceo-sig-title">대표이사 · 주식회사 컴퍼너스</div>
-      </div>
+      <div class="ceo-sig"><div class="ceo-sig-name">정의석 · 최규영</div><div class="ceo-sig-title">대표이사 · 주식회사 컴퍼너스</div></div>
     </div>
   </div>
 </section>
 
-<!-- APPLICATION EXAMPLE -->
-<section class="casesec">
-  <div class="sl">APPLICATION EXAMPLE</div>
-  <h2 class="sh2">컴퍼너스는 이렇게 구조를 진단합니다</h2>
-  <p class="ssub">문제를 단순 현상으로 보지 않고, 구조의 연결 관계로 봅니다.</p>
-  <div class="case-layout">
-    <div class="case-story">
-      <div class="case-quote"><span>예시:</span> 매출은 늘었지만 현금이 부족한 회사</div>
-      <div class="case-ctx">세무 신고와 장부에는 큰 문제가 없어 보이지만, 대표는 매달 현금 부족을 반복적으로 경험합니다. 컴퍼너스는 이 문제를 단순 자금 부족으로 보지 않습니다. 매출 구조, 원가 구조, 회수 기간, 고정비 구조, 할인 정책을 함께 분석합니다.</div>
-      <div class="case-find-title">STRUCTURE DIAGNOSIS — 진단 항목</div>
-      <div class="case-finds">
-        <div class="case-find"><div class="find-dot"></div><div>원가 구조와 매출 구조의 연동 여부</div></div>
-        <div class="case-find"><div class="find-dot"></div><div>외상 매출의 회수 기간과 현금흐름 영향</div></div>
-        <div class="case-find"><div class="find-dot"></div><div>할인 정책이 이익 구조에 미치는 영향</div></div>
-      </div>
-    </div>
-    <div class="case-result">
-      <div class="res-before">
-        <div class="res-before-tag">BEFORE — 구조 설계 전</div>
-        <div class="res-before-text">연매출 30억 / 매월 적자<br>대표가 매일 숫자 해석에 에너지 소진</div>
-      </div>
-      <div class="res-arrow">↓ BDAF 구조 진단 적용</div>
-      <div class="res-after">
-        <div class="res-after-tag">구조 설계 후</div>
-        <div class="res-after-text">동일 매출 / 동일 인원<br>현금흐름·원가율·할인 정책·회수 기간을 기준으로<br>대표가 매월 확인할 판단 지표를 구조화합니다.</div>
-      </div>
-      <div class="res-insight">사람이 바뀐 것이 아닙니다.<br>구조가 바뀐 것입니다.</div>
+<section class="section casesec">
+  <div class="inner">
+    <div class="sl">APPLICATION EXAMPLE</div>
+    <h2 class="sh2">컴퍼너스는 이렇게 구조를 진단합니다</h2>
+    <p class="ssub">문제를 단순 현상으로 보지 않고, 구조의 연결 관계로 봅니다.</p>
+    <div class="case-layout">
+      <div class="case-story"><div class="case-quote"><span>예시:</span> 매출은 늘었지만 현금이 부족한 회사</div><div class="case-ctx">세무 신고와 장부에는 큰 문제가 없어 보이지만, 대표는 매달 현금 부족을 반복적으로 경험합니다. 컴퍼너스는 이 문제를 단순 자금 부족으로 보지 않습니다. 매출 구조, 원가 구조, 회수 기간, 고정비 구조, 할인 정책을 함께 분석합니다.</div><div class="case-find-title">STRUCTURE DIAGNOSIS — 진단 항목</div><div class="case-finds"><div class="case-find"><div class="find-dot"></div><div>원가 구조와 매출 구조의 연동 여부</div></div><div class="case-find"><div class="find-dot"></div><div>외상 매출의 회수 기간과 현금흐름 영향</div></div><div class="case-find"><div class="find-dot"></div><div>할인 정책이 이익 구조에 미치는 영향</div></div></div></div>
+      <div class="case-result"><div class="res-before"><div class="res-before-tag">BEFORE — 구조 설계 전</div><div class="res-before-text">연매출 30억 / 매월 적자<br>대표가 매일 숫자 해석에 에너지 소진</div></div><div class="res-arrow">↓ BDAF 구조 진단 적용</div><div class="res-after"><div class="res-after-tag">구조 설계 후</div><div class="res-after-text">동일 매출 / 동일 인원<br>현금흐름·원가율·할인 정책·회수 기간을 기준으로<br>대표가 매월 확인할 판단 지표를 구조화합니다.</div></div><div class="res-insight">사람이 바뀐 것이 아닙니다.<br>구조가 바뀐 것입니다.</div></div>
     </div>
   </div>
 </section>
 
-<!-- ABOUT -->
-<section class="about" id="about">
-  <div class="about-grid">
-    <div>
-      <div class="sl">ABOUT COMPENERS</div>
-      <h2 class="sh2 sh2-white">우리는 숫자만 보지 않습니다.<br>숫자가 만들어지는 구조를 봅니다.</h2>
-      <p class="about-desc">컴퍼너스는 기업의 경영 판단 구조를 설계하는 회사입니다.<br>Competent + Partners — 전문가가 뒤에서 힘을 실어 고객사를 앞으로 밀어주는 파트너입니다.</p>
-      <div class="about-ci">
-        <img src="data:image/png;base64,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" alt="컴퍼너스 로고" class="ci-logo-img">
-        <div class="ci-txt">
-          <strong>COMPENERS</strong>
-          <span>Competent(전문적) + Partners(동반자)<br>C(전문가)가 P(고객사)를 밀어주는 구조.<br>파란색은 신뢰, 무채색은 안정을 상징합니다.</span>
-        </div>
-      </div>
-    </div>
-    <div class="about-stats">
-      <div class="stat">
-        <div class="stat-n">5</div>
-        <div class="stat-l">BDAF 핵심 시스템으로 구성된 독자적 방법론</div>
-      </div>
-      <div class="stat">
-        <div class="stat-n">2</div>
-        <div class="stat-l">Diagnose → Operate 단계로 완성되는 서비스 구조</div>
-      </div>
-      <div class="stat" style="grid-column: span 2;">
-        <div class="stat-q">"이 회사의 구조는 어떻게 작동하고 있는가?"</div>
-        <div class="stat-l">컴퍼너스가 항상 던지는 단 하나의 질문입니다.</div>
-      </div>
+<section class="section about" id="about">
+  <div class="inner">
+    <div class="about-grid">
+      <div><div class="sl">ABOUT COMPENERS</div><h2 class="sh2 sh2-white">우리는 숫자만 보지 않습니다.<br>숫자가 만들어지는 구조를 봅니다.</h2><p class="about-desc">컴퍼너스는 기업의 경영 판단 구조를 설계하는 회사입니다.<br>Competent + Partners — 전문가가 뒤에서 힘을 실어 고객사를 앞으로 밀어주는 파트너입니다.</p><div class="about-ci"><img src="data:image/png;base64,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" alt="컴퍼너스 로고" class="ci-logo-img"><div class="ci-txt"><strong>COMPENERS</strong><span>Competent(전문적) + Partners(동반자)<br>C(전문가)가 P(고객사)를 밀어주는 구조.<br>파란색은 신뢰, 무채색은 안정을 상징합니다.</span></div></div></div>
+      <div class="about-stats"><div class="stat"><div class="stat-n">5</div><div class="stat-l">BDAF 핵심 시스템으로 구성된 독자적 방법론</div></div><div class="stat"><div class="stat-n">2</div><div class="stat-l">Diagnose → Operate 단계로 완성되는 서비스 구조</div></div><div class="stat stat-wide"><div class="stat-q">"이 회사의 구조는 어떻게 작동하고 있는가?"</div><div class="stat-l">컴퍼너스가 항상 던지는 단 하나의 질문입니다.</div></div></div>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
 <section class="cta-sec" id="contact">
-  <div class="cta-q"><span>"이 회사의 구조는</span><br>어떻게 작동하고 있는가?"</div>
-  <p class="cta-body">이 질문에 바로 답할 수 없다면, 지금이 구조 진단을 받을 때입니다.<br>컴퍼너스는 판단 가능한 구조를 설계하고,<br>대표님은 더 정확한 결정을 내릴 수 있습니다.</p>
-  <a href="https://forms.gle/bnhZoEFGUXV4CzKm8" class="cta-btn" target="_blank" rel="noopener">경영 구조 진단 문의하기 →</a>
-  <div class="cta-note">첫 상담을 통해 현재 회사의 구조적 이슈를 함께 정리합니다.</div>
+  <div class="cta-inner"><div class="cta-q"><span>"이 회사의 구조는</span><br>어떻게 작동하고 있는가?"</div><p class="cta-body">이 질문에 바로 답할 수 없다면, 지금이 구조 진단을 받을 때입니다.<br>컴퍼너스는 판단 가능한 구조를 설계하고,<br>대표님은 더 정확한 결정을 내릴 수 있습니다.</p><a href="https://forms.gle/bnhZoEFGUXV4CzKm8" class="cta-btn" target="_blank" rel="noopener">경영 구조 진단 문의하기 →</a><div class="cta-note">첫 상담을 통해 현재 회사의 구조적 이슈를 함께 정리합니다.</div></div>
 </section>
 
-<!-- LOCATION -->
-<section class="location" id="location">
-  <div class="sl">LOCATION</div>
-  <h2 class="sh2">오시는 길</h2>
-  <p class="ssub">서울특별시 영등포구 문래 SK V1 Center에 위치해 있습니다.</p>
-  <div class="location-grid">
-    <div class="location-map">
-      <div class="location-map-icon">📍</div>
-      <div class="location-map-addr">
-        서울특별시 영등포구 선유로9길 10<br>
-        문래 SK V1 Center 10층 1008호
-      </div>
-      <a href="https://naver.me/5impKoC1" class="location-map-btn" target="_blank" rel="noopener">
-        네이버 지도에서 보기 →
-      </a>
-    </div>
-    <div class="location-info">
-      <div class="loc-item">
-        <div class="loc-icon">🏢</div>
-        <div>
-          <div class="loc-label">COMPANY</div>
-          <div class="loc-value">주식회사 컴퍼너스</div>
-        </div>
-      </div>
-      <div class="loc-item">
-        <div class="loc-icon">📌</div>
-        <div>
-          <div class="loc-label">ADDRESS</div>
-          <div class="loc-value">(우: 07281) 서울특별시 영등포구 선유로9길 10<br>문래 SK V1 Center 10층 1008호</div>
-        </div>
-      </div>
-      <div class="loc-item">
-        <div class="loc-icon">👤</div>
-        <div>
-          <div class="loc-label">CEO</div>
-          <div class="loc-value">정의석, 최규영</div>
-        </div>
-      </div>
-      <div class="loc-item">
-        <div class="loc-icon">📋</div>
-        <div>
-          <div class="loc-label">BUSINESS REG. NO.</div>
-          <div class="loc-value">721-87-03463</div>
-        </div>
-      </div>
-      <div class="loc-item">
-        <div class="loc-icon">📞</div>
-        <div>
-          <div class="loc-label">TEL</div>
-          <div class="loc-value"><a href="tel:02-2088-3808">02-2088-3808</a></div>
-        </div>
-      </div>
-      <div class="loc-item">
-        <div class="loc-icon">✉️</div>
-        <div>
-          <div class="loc-label">EMAIL</div>
-          <div class="loc-value"><a href="mailto:cp@compeners.co.kr">cp@compeners.co.kr</a></div>
-        </div>
-      </div>
-    </div>
+<section class="section location" id="location">
+  <div class="inner">
+    <div class="sl">LOCATION</div><h2 class="sh2">오시는 길</h2><p class="ssub">서울특별시 영등포구 문래 SK V1 Center에 위치해 있습니다.</p>
+    <div class="location-grid"><div class="location-map"><div class="location-map-icon">📍</div><div class="location-map-addr">서울특별시 영등포구 선유로9길 10<br>문래 SK V1 Center 10층 1008호</div><a href="https://naver.me/5impKoC1" class="location-map-btn" target="_blank" rel="noopener">네이버 지도에서 보기 →</a></div><div class="location-info"><div class="loc-item"><div class="loc-icon">🏢</div><div><div class="loc-label">COMPANY</div><div class="loc-value">주식회사 컴퍼너스</div></div></div><div class="loc-item"><div class="loc-icon">📌</div><div><div class="loc-label">ADDRESS</div><div class="loc-value">(우: 07281) 서울특별시 영등포구 선유로9길 10<br>문래 SK V1 Center 10층 1008호</div></div></div><div class="loc-item"><div class="loc-icon">👤</div><div><div class="loc-label">CEO</div><div class="loc-value">정의석, 최규영</div></div></div><div class="loc-item"><div class="loc-icon">📋</div><div><div class="loc-label">BUSINESS REG. NO.</div><div class="loc-value">721-87-03463</div></div></div><div class="loc-item"><div class="loc-icon">📞</div><div><div class="loc-label">TEL</div><div class="loc-value"><a href="tel:02-2088-3808">02-2088-3808</a></div></div></div><div class="loc-item"><div class="loc-icon">✉️</div><div><div class="loc-label">EMAIL</div><div class="loc-value"><a href="mailto:cp@compeners.co.kr">cp@compeners.co.kr</a></div></div></div></div></div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
-  <div class="ft-logo">
-    <strong>COMPENERS</strong>
-    <span>주식회사 컴퍼너스 | 사업자등록번호 721-87-03463 | 대표이사 정의석, 최규영</span>
-    <span>서울특별시 영등포구 선유로9길 10 문래 SK V1 Center 10층 1008호</span>
-    <span>Tel 02-2088-3808 | cp@compeners.co.kr</span>
-  </div>
-  <div class="ft-right">
-    <div class="ft-links">
-      <a href="#service">서비스 소개</a>
-      <a href="#bdaf">BDAF</a>
-      <a href="#location">오시는 길</a>
-      <a href="https://blog.naver.com/compeners" target="_blank" rel="noopener">블로그</a>
-      <a href="https://www.instagram.com/compeners/" target="_blank" rel="noopener">인스타그램</a>
-    </div>
-    <div class="ft-links">
-      <a href="terms.html">이용약관</a>
-      <a href="privacy.html">개인정보처리방침</a>
-      <a href="email-policy.html">이메일무단수집거부</a>
-      <!-- 관련 사이트 드롭다운 -->
-      <div class="ft-dropdown">
-        <button class="ft-dropdown-btn">관련 사이트 ▾</button>
-        <div class="ft-dropdown-menu">
-          <a href="http://www.nodixops.com/" target="_blank" rel="noopener">
-            <span class="ft-dd-label">노딕스랩</span>
-            <span class="ft-dd-sub">홈페이지</span>
-          </a>
-          <a href="https://www.linkedin.com/in/의석-정-bb10693b1" target="_blank" rel="noopener">
-            <span class="ft-dd-label">노딕스랩</span>
-            <span class="ft-dd-sub">LinkedIn</span>
-          </a>
-          <a href="https://blog.naver.com/compeners79" target="_blank" rel="noopener">
-            <span class="ft-dd-label">노딕스랩</span>
-            <span class="ft-dd-sub">블로그</span>
-          </a>
-          <div class="ft-dd-divider"></div>
-          <div class="ft-dd-coming">
-            <span class="ft-dd-label">온비즈파트너스</span>
-            <span class="ft-dd-sub">준비 중</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="ft-copy">© 2026 Compeners. All rights reserved.</div>
+  <div class="footer-inner">
+    <div class="ft-logo"><strong>COMPENERS</strong><span>주식회사 컴퍼너스 | 사업자등록번호 721-87-03463 | 대표이사 정의석, 최규영</span><span>서울특별시 영등포구 선유로9길 10 문래 SK V1 Center 10층 1008호</span><span>Tel 02-2088-3808 | cp@compeners.co.kr</span></div>
+    <div class="ft-right"><div class="ft-links"><a href="#service">서비스 소개</a><a href="#bdaf">BDAF</a><a href="#location">오시는 길</a><a href="https://blog.naver.com/compeners" target="_blank" rel="noopener">블로그</a><a href="https://www.instagram.com/compeners/" target="_blank" rel="noopener">인스타그램</a></div><div class="ft-links"><a href="terms.html">이용약관</a><a href="privacy.html">개인정보처리방침</a><a href="email-policy.html">이메일무단수집거부</a><div class="ft-dropdown"><button class="ft-dropdown-btn">관련 사이트 ▾</button><div class="ft-dropdown-menu"><a href="http://www.nodixops.com/" target="_blank" rel="noopener"><span class="ft-dd-label">노딕스랩</span><span class="ft-dd-sub">홈페이지</span></a><a href="https://www.linkedin.com/in/의석-정-bb10693b1" target="_blank" rel="noopener"><span class="ft-dd-label">노딕스랩</span><span class="ft-dd-sub">LinkedIn</span></a><a href="https://blog.naver.com/compeners79" target="_blank" rel="noopener"><span class="ft-dd-label">노딕스랩</span><span class="ft-dd-sub">블로그</span></a><div class="ft-dd-divider"></div><div class="ft-dd-coming"><span class="ft-dd-label">온비즈파트너스</span><span class="ft-dd-sub">준비 중</span></div></div></div></div><div class="ft-copy">© 2026 Compeners. All rights reserved.</div></div>
   </div>
 </footer>
-
 </body>
 </html>
