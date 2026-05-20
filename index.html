@@ -233,9 +233,12 @@ footer { background: #050D19; border-top: 1px solid rgba(255,255,255,0.05); }
     scroll-snap-type: y mandatory;
     scroll-padding-top: 64px;
   }
-  section, .ceo {
+  section, .ceo, footer {
     scroll-snap-align: start;
     scroll-snap-stop: normal;
+  }
+  footer {
+    scroll-margin-top: 64px;
   }
 }
 
